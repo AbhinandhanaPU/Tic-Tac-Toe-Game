@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tictactoe_game/utils/color_constant.dart';
 import 'package:tictactoe_game/utils/style_constant.dart';
 import 'package:tictactoe_game/view/home_screen.dart';
+import 'package:tictactoe_game/view/widgets/logo.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -30,9 +31,16 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: ColorConstant.primaryColor,
       body: Center(
-        child: Text(
-          "TIC TAC TOE",
-          style: StyleConstant.primaryTextStyle,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ReusableLogo(),
+            SizedBox(height: 20),
+            Text(
+              "TIC TAC TOE",
+              style: StyleConstant.primaryTextStyle,
+            ),
+          ],
         ),
       ),
     );
