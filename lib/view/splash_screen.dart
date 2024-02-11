@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:tictactoe_game/utils/color_constant.dart';
+import 'package:tictactoe_game/utils/style_constant.dart';
 import 'package:tictactoe_game/view/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -26,8 +28,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorConstant.primaryColor,
       body: Center(
-        child: Text("Tic Tac Toe game"),
+        child: Text(
+          "TIC TAC TOE",
+          style: StyleConstant.primaryTextStyle,
+        ),
       ),
     );
   }
