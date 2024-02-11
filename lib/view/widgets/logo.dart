@@ -14,7 +14,7 @@ class ReusableLogo extends StatelessWidget {
       height: 65,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: ColorConstant.primaryWhite.withOpacity(0.8),
+        color: ColorConstant.primaryWhite.withOpacity(0.9),
       ),
       child: Stack(
         children: [
