@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:tictactoe_game/utils/color_constant.dart';
 import 'package:tictactoe_game/utils/style_constant.dart';
-import 'package:tictactoe_game/view/screens/home_screen.dart';
+import 'package:tictactoe_game/view/screens/intro_screen.dart';
 import 'package:tictactoe_game/view/widgets/logo.dart';
 
 class SplashScreen extends StatefulWidget {
