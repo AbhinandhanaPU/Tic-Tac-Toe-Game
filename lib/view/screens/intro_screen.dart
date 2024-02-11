@@ -6,14 +6,14 @@ import 'package:tictactoe_game/view/screens/players_list.dart';
 import 'package:tictactoe_game/view/widgets/custom_button.dart';
 import 'package:tictactoe_game/view/widgets/logo.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class IntroScreen extends StatefulWidget {
+  const IntroScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<IntroScreen> createState() => _IntroScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
