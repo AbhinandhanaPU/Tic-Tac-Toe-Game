@@ -26,7 +26,7 @@ class _PlayersListState extends State<PlayersList> {
           children: [
             Text(
               "Enter Players Name",
-              style: StyleConstant.nameStyle,
+              style: StyleConstant.headStyle,
             ),
             SizedBox(height: 40),
             CustomTextField(
@@ -42,6 +42,7 @@ class _PlayersListState extends State<PlayersList> {
             ),
             SizedBox(height: 50),
             CustomButton(
+              buttonText: "Start game",
               onPressed: () {
                 Navigator.push(
                     context,

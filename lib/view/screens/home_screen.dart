@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe_game/utils/color_constant.dart';
 import 'package:tictactoe_game/utils/style_constant.dart';
+import 'package:tictactoe_game/view/screens/howto_play.dart';
 import 'package:tictactoe_game/view/screens/players_list.dart';
 import 'package:tictactoe_game/view/widgets/custom_button.dart';
 import 'package:tictactoe_game/view/widgets/logo.dart';
@@ -29,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 100),
             CustomButton(
+              buttonText: "Start Game",
               onPressed: () {
                 Navigator.push(
                     context,
@@ -37,6 +39,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     ));
               },
             ),
+            SizedBox(height: 40),
+            CustomButton(
+              buttonText: "How to play",
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => GameRules(),
+                    ));
+              },
+            )
           ],
         ),
       ),

@@ -17,11 +17,17 @@ class StyleConstant {
       letterSpacing: 2,
       fontWeight: FontWeight.bold,
       color: ColorConstant.primaryColor);
-  static TextStyle nameStyle = GoogleFonts.poppins(
+  static TextStyle headStyle = GoogleFonts.poppins(
       fontSize: 25,
-      fontWeight: FontWeight.bold,
-      letterSpacing: 3,
+      fontWeight: FontWeight.w900,
+      letterSpacing: 2,
       color: ColorConstant.primaryWhite);
+
+  static TextStyle rulesDes = GoogleFonts.poppins(
+    fontSize: 17,
+    fontWeight: FontWeight.w500,
+    color: ColorConstant.primaryWhite,
+  );
 
   // textformfield border style
   static OutlineInputBorder border = OutlineInputBorder(

@@ -5,8 +5,10 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     required this.onPressed,
+    required this.buttonText,
   });
   final VoidCallback onPressed;
+  final String buttonText;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -14,7 +16,7 @@ class CustomButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           child: Text(
-            "Start Game",
+            buttonText,
             style: StyleConstant.buttonText,
           ),
         ));
