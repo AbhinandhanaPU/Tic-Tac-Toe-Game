@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe_game/utils/color_constant.dart';
 import 'package:tictactoe_game/utils/style_constant.dart';
-import 'package:tictactoe_game/view/players_list.dart';
+import 'package:tictactoe_game/view/screens/players_list.dart';
 import 'package:tictactoe_game/view/widgets/custom_button.dart';
 import 'package:tictactoe_game/view/widgets/logo.dart';
 

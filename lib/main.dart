@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tictactoe_game/view/splash_screen.dart';
+import 'package:tictactoe_game/view/screens/splash_screen.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
