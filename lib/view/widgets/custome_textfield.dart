@@ -16,6 +16,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      style: StyleConstant.rulesDes,
       decoration: InputDecoration(
           border: StyleConstant.border,
           focusedBorder: StyleConstant.focusedBorder,

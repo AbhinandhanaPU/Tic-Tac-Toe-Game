@@ -4,7 +4,7 @@ import 'package:tictactoe_game/utils/color_constant.dart';
 
 class StyleConstant {
   static TextStyle primaryTextStyle = GoogleFonts.coiny(
-      fontSize: 25,
+      fontSize: 30,
       fontWeight: FontWeight.bold,
       letterSpacing: 3,
       color: ColorConstant.primaryWhite);
@@ -18,7 +18,7 @@ class StyleConstant {
       fontWeight: FontWeight.bold,
       color: ColorConstant.primaryColor);
   static TextStyle headStyle = GoogleFonts.poppins(
-      fontSize: 25,
+      fontSize: 28,
       fontWeight: FontWeight.w900,
       letterSpacing: 2,
       color: ColorConstant.primaryWhite);
@@ -29,6 +29,15 @@ class StyleConstant {
     color: ColorConstant.primaryWhite,
   );
 
+  static TextStyle playerText = GoogleFonts.poppins(
+    fontSize: 25,
+    fontWeight: FontWeight.w500,
+    color: ColorConstant.primaryWhite,
+  );
+  static TextStyle textStyle3 = GoogleFonts.poppins(
+    fontSize: 15,
+    color: ColorConstant.primaryWhite,
+  );
   // textformfield border style
   static OutlineInputBorder border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(20),

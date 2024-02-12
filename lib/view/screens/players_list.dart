@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:tictactoe_game/utils/color_constant.dart';
 import 'package:tictactoe_game/utils/style_constant.dart';
@@ -13,6 +16,52 @@ class PlayersList extends StatefulWidget {
 }
 
 class _PlayersListState extends State<PlayersList> {
+  @override
+  void initState() {
+    Timer(Duration(seconds: 1), () {
+      AwesomeDialog(
+        context: context,
+        dialogType: DialogType.info,
+        dialogBackgroundColor: ColorConstant.primaryColor,
+        animType: AnimType.rightSlide,
+        btnOkText: "OK",
+        titleTextStyle: StyleConstant.rulesDes,
+        descTextStyle: StyleConstant.rulesDes,
+        buttonsTextStyle: StyleConstant.buttonText,
+        title: "Entering players name is optional",
+        desc: "You can start the game by clicking 'Start Game' button",
+        btnOkColor: ColorConstant.primaryWhite,
+        btnOkOnPress: () => Navigator.pop(context),
+      ).show();
+      // showDialog(
+      //   context: context,
+      //   builder: (context) => AlertDialog(
+      //     backgroundColor: ColorConstant.primaryColor.withOpacity(0.9),
+      //     shadowColor: ColorConstant.primaryWhite,
+      //     elevation: 15,
+      //     title: Text(
+      //       "Entering players name is optional",
+      //       style: StyleConstant.rulesDes,
+      //     ),
+      //     content: Text(
+      //       "You can start the game by clicking 'Start Game' button",
+      //       style: StyleConstant.textStyle3,
+      //       textAlign: TextAlign.justify,
+      //     ),
+      //     actions: [
+      //       TextButton(
+      //           onPressed: () => Navigator.pop(context),
+      //           child: Text(
+      //             "OK",
+      //             style: StyleConstant.playerText,
+      //           ))
+      //     ],
+      //   ),
+      // );
+    });
+    super.initState();
+  }
+
   TextEditingController oneController = TextEditingController();
   TextEditingController twoController = TextEditingController();
   @override
@@ -40,6 +89,11 @@ class _PlayersListState extends State<PlayersList> {
               playerIcon: Icons.radio_button_off,
               playerName: "Player Two",
             ),
+            SizedBox(height: 20),
+            Text(
+              "Remember player ' X ' starts first",
+              style: StyleConstant.textStyle3,
+            ),
             SizedBox(height: 50),
             CustomButton(
               buttonText: "Start game",
@@ -47,8 +101,17 @@ class _PlayersListState extends State<PlayersList> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => GameScreen(),
+                      builder: (context) => GameScreen(
+                        playerOne: oneController.text.isNotEmpty
+                            ? oneController.text
+                            : "Player One",
+                        playerTwo: twoController.text.isNotEmpty
+                            ? twoController.text
+                            : "Player Two",
+                      ),
                     ));
+                oneController.clear();
+                twoController.clear();
               },
             )
           ],
