@@ -6,7 +6,6 @@ import 'package:tictactoe_game/utils/color_constant.dart';
 import 'package:tictactoe_game/utils/style_constant.dart';
 import 'package:tictactoe_game/view/screens/game_screen.dart';
 import 'package:tictactoe_game/view/widgets/custom_button.dart';
-import 'package:tictactoe_game/view/widgets/custome_textField.dart';
 
 class PlayersList extends StatefulWidget {
   const PlayersList({super.key});
@@ -33,33 +32,15 @@ class _PlayersListState extends State<PlayersList> {
         btnOkColor: ColorConstant.primaryWhite,
         btnOkOnPress: () => Navigator.pop(context),
       ).show();
-      // showDialog(
-      //   context: context,
-      //   builder: (context) => AlertDialog(
-      //     backgroundColor: ColorConstant.primaryColor.withOpacity(0.9),
-      //     shadowColor: ColorConstant.primaryWhite,
-      //     elevation: 15,
-      //     title: Text(
-      //       "Entering players name is optional",
-      //       style: StyleConstant.rulesDes,
-      //     ),
-      //     content: Text(
-      //       "You can start the game by clicking 'Start Game' button",
-      //       style: StyleConstant.textStyle3,
-      //       textAlign: TextAlign.justify,
-      //     ),
-      //     actions: [
-      //       TextButton(
-      //           onPressed: () => Navigator.pop(context),
-      //           child: Text(
-      //             "OK",
-      //             style: StyleConstant.playerText,
-      //           ))
-      //     ],
-      //   ),
-      // );
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    oneController.dispose();
+    twoController.dispose();
+    super.dispose();
   }
 
   TextEditingController oneController = TextEditingController();
@@ -78,16 +59,34 @@ class _PlayersListState extends State<PlayersList> {
               style: StyleConstant.headStyle,
             ),
             SizedBox(height: 40),
-            CustomTextField(
+            TextField(
               controller: oneController,
-              playerIcon: Icons.close,
-              playerName: "Player X",
+              style: StyleConstant.rulesDes,
+              decoration: InputDecoration(
+                  border: StyleConstant.border,
+                  focusedBorder: StyleConstant.focusedBorder,
+                  prefixIcon: Icon(
+                    Icons.close,
+                    size: 30,
+                    color: ColorConstant.primaryWhite,
+                  ),
+                  hintText: "Player X",
+                  hintStyle: TextStyle(color: ColorConstant.primaryGrey)),
             ),
             SizedBox(height: 20),
-            CustomTextField(
+            TextField(
               controller: twoController,
-              playerIcon: Icons.radio_button_off,
-              playerName: "Player O",
+              style: StyleConstant.rulesDes,
+              decoration: InputDecoration(
+                  border: StyleConstant.border,
+                  focusedBorder: StyleConstant.focusedBorder,
+                  prefixIcon: Icon(
+                    Icons.radio_button_off,
+                    size: 30,
+                    color: ColorConstant.primaryWhite,
+                  ),
+                  hintText: "Player O",
+                  hintStyle: TextStyle(color: ColorConstant.primaryGrey)),
             ),
             SizedBox(height: 20),
             Text(
@@ -110,8 +109,6 @@ class _PlayersListState extends State<PlayersList> {
                             : "Player O",
                       ),
                     ));
-                oneController.clear();
-                twoController.clear();
               },
             )
           ],
