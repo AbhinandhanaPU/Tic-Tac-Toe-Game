@@ -41,10 +41,6 @@ Flutter Tic Tac Toe is a simple mobile application developed using the Flutter f
 - **Flutter:** Front-end framework for building cross-platform applications.
 - **Dart:** the programming language used in combination with Flutter to create the logic and functionality of the Notes App.
 
-## Contributors
-
-- [Abhinandhana](https://github.com/AbhinandhanaPU)
-
 ---
 
 **Disclaimer:** This application is for educational purposes and does not intend to infringe on any copyrights.
