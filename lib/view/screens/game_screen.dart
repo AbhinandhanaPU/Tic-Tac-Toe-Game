@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tictactoe_game/utils/color_constant.dart';
 import 'package:tictactoe_game/utils/style_constant.dart';
-import 'package:tictactoe_game/view/widgets/logo.dart';
+import 'package:tictactoe_game/view/screens/players_list.dart';
+import 'package:tictactoe_game/view/widgets/custom_button.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({
@@ -22,12 +23,16 @@ class _GameScreenState extends State<GameScreen> {
   late String _currentPlayer;
   late String _winner;
   late bool _gameOver;
+  late int _scoreO;
+  late int _scoreX;
   @override
   void initState() {
     _board = List.generate(3, (_) => List.generate(3, (_) => ""));
     _currentPlayer = "X";
     _winner = "";
     _gameOver = false;
+    _scoreX = 0;
+    _scoreO = 0;
     super.initState();
   }
 
@@ -55,30 +60,33 @@ class _GameScreenState extends State<GameScreen> {
           _board[row][2] == _currentPlayer) {
         _winner = _currentPlayer;
         _gameOver = true;
+        _updateScore(_winner);
       } else if (_board[0][col] == _currentPlayer &&
           _board[1][col] == _currentPlayer &&
           _board[2][col] == _currentPlayer) {
         _winner = _currentPlayer;
         _gameOver = true;
+        _updateScore(_winner);
       } else if (_board[0][0] == _currentPlayer &&
           _board[1][1] == _currentPlayer &&
           _board[2][2] == _currentPlayer) {
         _winner = _currentPlayer;
         _gameOver = true;
+        _updateScore(_winner);
       } else if (_board[0][2] == _currentPlayer &&
           _board[1][1] == _currentPlayer &&
           _board[2][0] == _currentPlayer) {
         _winner = _currentPlayer;
         _gameOver = true;
+        _updateScore(_winner);
+      } else if (!_board.any((row) => row.any((cell) => cell == ""))) {
+        // Check for a drow
+        _gameOver = true;
+        _winner = "Its a Drow";
       }
       // Switch Players
       _currentPlayer = _currentPlayer == "X" ? "O" : "X";
 
-      // Check for a drow
-      if (!_board.any((row) => row.any((cell) => cell == ""))) {
-        _gameOver = true;
-        _winner = "Its a Drow";
-      }
       if (_winner != "") {
         AwesomeDialog(
           context: context,
@@ -98,20 +106,53 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 
+  void _updateScore(String winner) {
+    if (winner == "X") {
+      _scoreX++;
+    } else if (winner == "O") {
+      _scoreO++;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstant.primaryColor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
         child: Column(
           children: [
-            Expanded(
-              flex: 1,
-              child: Center(
-                child: ReusableLogo(visible: false),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      widget.playerOne,
+                      style: StyleConstant.playerText,
+                    ),
+                    Text(
+                      _scoreX.toString(),
+                      style: StyleConstant.primaryTextStyle,
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text(
+                      widget.playerTwo,
+                      style: StyleConstant.playerText,
+                    ),
+                    Text(
+                      _scoreO.toString(),
+                      style: StyleConstant.primaryTextStyle,
+                    ),
+                  ],
+                )
+              ],
             ),
+            SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -170,44 +211,23 @@ class _GameScreenState extends State<GameScreen> {
             ),
             SizedBox(height: 25),
             Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        widget.playerOne,
-                        style: StyleConstant.playerText,
-                      ),
-                      Text(
-                        "X",
-                        style: StyleConstant.primaryTextStyle,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 180,
-                    child: VerticalDivider(
-                      thickness: 2,
-                      color: ColorConstant.primaryGrey,
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        widget.playerTwo,
-                        style: StyleConstant.playerText,
-                      ),
-                      Text(
-                        "O",
-                        style: StyleConstant.primaryTextStyle,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            )
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                CustomButton(
+                  onPressed: () => _resetGame(),
+                  buttonText: "Reset Game",
+                ),
+                CustomButton(
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PlayersList(),
+                      )),
+                  buttonText: "Restart Game",
+                ),
+              ],
+            ))
           ],
         ),
       ),

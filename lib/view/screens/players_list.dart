@@ -81,13 +81,13 @@ class _PlayersListState extends State<PlayersList> {
             CustomTextField(
               controller: oneController,
               playerIcon: Icons.close,
-              playerName: "Player One",
+              playerName: "Player X",
             ),
             SizedBox(height: 20),
             CustomTextField(
               controller: twoController,
               playerIcon: Icons.radio_button_off,
-              playerName: "Player Two",
+              playerName: "Player O",
             ),
             SizedBox(height: 20),
             Text(
@@ -104,10 +104,10 @@ class _PlayersListState extends State<PlayersList> {
                       builder: (context) => GameScreen(
                         playerOne: oneController.text.isNotEmpty
                             ? oneController.text
-                            : "Player One",
+                            : "Player X",
                         playerTwo: twoController.text.isNotEmpty
                             ? twoController.text
-                            : "Player Two",
+                            : "Player O",
                       ),
                     ));
                 oneController.clear();
